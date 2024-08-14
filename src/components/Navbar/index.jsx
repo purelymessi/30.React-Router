@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { FaBars, FaX } from "react-icons/fa6";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FaBars, FaX } from "react-icons/fa6";
 
 const links = [
   {
@@ -19,20 +19,21 @@ const links = [
     title: "Contacts",
     href: "/contacts",
   },
+  {
+    title: "Add Product",
+    href: "/add-product",
+  },
 ];
+
 function Navbar() {
   let location = useLocation();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const handleNavToggle = () => {
     setIsNavOpen(!isNavOpen);
   };
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({
-        top: 0,
-      });
-    }
-  }, [location.pathname]);
+
+
+
   return (
     <header className="bg-white border-b border-b-slate-200 py-4">
       <nav className="container flex justify-between items-center">
