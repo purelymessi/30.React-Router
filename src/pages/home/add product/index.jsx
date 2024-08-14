@@ -5,7 +5,9 @@ import { toast, Toaster } from "react-hot-toast";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
-  price: Yup.number().required("Price is required").positive("Price must be positive"),
+  price: Yup.number()
+    .required("Price is required")
+    .positive("Price must be positive"),
   description: Yup.string().required("Description is required"),
   image: Yup.string().url("Invalid URL").required("Image URL is required"),
 });
@@ -13,7 +15,7 @@ const validationSchema = Yup.object({
 export default function AddProductPage({ addProduct }) {
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
-      const response = axios.patch("http://localhost:3000/products", values);
+      const response = axios.post("http://localhost:3000/products", values);
       const newProduct = response.data;
 
       if (addProduct) {
