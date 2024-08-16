@@ -23,7 +23,7 @@ export default function AddProductPage({ addProduct }) {
       }
 
       toast.success("Product added successfully!");
-      resetForm(); // Reset the form after successful submission
+      resetForm();
     } catch (error) {
       toast.error("Failed to add product");
     } finally {
