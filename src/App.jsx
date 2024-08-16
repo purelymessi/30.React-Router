@@ -4,6 +4,7 @@ import Homepage from "./pages/home";
 import Productspage from "./pages/products";
 import SingleProduct from "./pages/single-product";
 import AddProductPage from "./pages/home/add product";
+import EditProductPage from "./pages/home/edit-product";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -13,10 +14,11 @@ export default function App() {
       children: [
         { path: "/", element: <Homepage /> },
         { path: "/products", element: <Productspage /> },
-        { path: "/products/:productId", element: <SingleProduct /> },
-        { path: "/about", element: <Productspage /> },
+        { path: "/about", element: <Productspage /> },   
         { path: "/contacts", element: <Productspage /> },
-        { path: "/add-product", element: <AddProductPage /> }, 
+        { path: "/products/:productId", element: <SingleProduct /> },
+        { path: "/add-product", element: <AddProductPage /> },
+        { path: "/edit-product/:productId", element: <EditProductPage /> },
       ],
     },
   ]);

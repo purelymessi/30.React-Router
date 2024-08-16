@@ -1,38 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaX } from "react-icons/fa6";
 
 const links = [
-  {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "Products",
-    href: "/products",
-  },
-  {
-    title: "About",
-    href: "/about",
-  },
-  {
-    title: "Contacts",
-    href: "/contacts",
-  },
-  {
-    title: "Add Product",
-    href: "/add-product",
-  },
+  { title: "Home", href: "/" },
+  { title: "Products", href: "/products" },
+  { title: "About", href: "/about" },
+  { title: "Contacts", href: "/contacts" },
+  { title: "Add Product", href: "/add-product" },
+  { title: "", href: "/edit-product"},
 ];
 
 function Navbar() {
-  let location = useLocation();
+  const location = useLocation();
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const handleNavToggle = () => {
-    setIsNavOpen(!isNavOpen);
-  };
-
-
+  const handleNavToggle = () => setIsNavOpen(!isNavOpen);
 
   return (
     <header className="bg-white border-b border-b-slate-200 py-4">
@@ -41,7 +23,7 @@ function Navbar() {
           re:<span className="text-black">commerce</span>
         </div>
         <ul
-          className={`fixed top-0 z-[5] transition-all duration-500  p-12 bg-white/50 backdrop-blur-md w-1/2 h-full md:static flex flex-col md:flex-row md:p-0  md:justify-end md:items-center gap-4 text-lg ${
+          className={`fixed top-0 z-[5] transition-all duration-500  p-12 bg-white/50 backdrop-blur-md w-1/2 h-full md:static flex flex-col md:flex-row md:p-0 md:justify-end md:items-center gap-4 text-lg ${
             isNavOpen ? "right-0" : "-right-full"
           }`}
         >

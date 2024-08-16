@@ -4,14 +4,15 @@ import axios from "axios";
 import Loading from "../../components/Loading";
 
 function Homepage() {
-  const [NewProducts, setNewProducts] = useState([]);
   const [products, setProducts] = useState([]);
 
-  const fetchProducts = () => {
-    axios.get("http://localhost:3000/products").then((res) => {
-      setNewProducts(res.data);
-      setProducts(res.data);
-    });
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/products");
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Failed to fetch products:", error);
+    }
   };
 
   useEffect(() => {

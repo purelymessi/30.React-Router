@@ -15,7 +15,7 @@ const validationSchema = Yup.object({
 export default function AddProductPage({ addProduct }) {
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
-      const response = axios.post("http://localhost:3000/products", values);
+      const response = await axios.post("http://localhost:3000/products", values); // Await the response
       const newProduct = response.data;
 
       if (addProduct) {
@@ -23,8 +23,11 @@ export default function AddProductPage({ addProduct }) {
       }
 
       toast.success("Product added successfully!");
+      resetForm(); // Reset the form after successful submission
     } catch (error) {
       toast.error("Failed to add product");
+    } finally {
+      setSubmitting(false);
     }
   };
 
